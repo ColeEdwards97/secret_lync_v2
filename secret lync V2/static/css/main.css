@@ -1,0 +1,44 @@
+body {
+	font-family: 'Consolas' !important;
+	font-size: 14px !important;
+}
+
+input.messagebody {
+	width: 410px;
+}
+
+button.send {
+	width: 70px;
+}
+
+div.header {
+	width: 500px;
+	height: 24px;
+	border: 2px inset;
+	background-color: cornflowerblue;
+	text-align: center;
+	display:table-cell;
+    vertical-align:middle;
+}
+
+div.footer {
+	width: 500px;
+	height: 28px;
+	overflow: hidden;
+	border: 2px inset;
+	background-color: cornflowerblue;
+	text-align: center;
+	display:table-cell;
+    vertical-align:middle;
+}
+
+div.chat {
+	width: 500px;
+	height: 300px;
+	overflow: auto;
+	border: 2px inset;
+}
+
+p.errortext {
+	color: red !important;
+}

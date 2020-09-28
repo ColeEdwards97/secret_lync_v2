@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+
+<head>
+	<title>login</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" />
+</head>
+
+
+<body>
+
+	<p class="errortext">{{ msg }}</p>
+
+	<form action="/login" method="post" autocomplete="off">
+		username: <input id="username" name="username"><br>
+		key: <input id="key" type="password" name="key"><br>
+		<button name="login">login</button>
+	</form>
+	
+</body>
+
+
+</html>

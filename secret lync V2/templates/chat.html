@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+
+<head>
+	<title>Super Secret Lync</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" />	
+</head>
+
+
+<body>
+
+	<!-- ajax request to prevent page from reloading -->
+	<script type="text/javascript">
+		function send_ajax() {
+			var req = new XMLHttpRequest();
+			var message = document.getElementById("message");
+			req.open('POST', '/chat', true);
+			req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+			req.send('message=' + message.value);
+			message.value = "";
+		}
+	</script>
+
+	<div class="header">Super Secrety Lync Chat</div>
+	<div class="chat" id="chat"></div>
+	
+	<div class="footer" id="footer">
+	
+		<form id="form" action="/chat" method="post">
+			<input class="messagebody" id="message" type="text" name="message" autocomplete="off">
+			<button type="button" class="send" name="send" onclick="send_ajax();">Send</button>
+		</form>
+		
+		<!-- setting up the message input field to send ajax on submit -->
+		<script type="text/javascript">
+			var message = document.getElementById("message");
+			message.focus();
+			message.addEventListener('keypress', function (event) {
+				if (event.keyCode == 13) {
+					event.preventDefault();
+					send_ajax();
+				}
+			});
+		</script>
+			
+	</div>
+
+	<!-- read values from stream -->
+	{% for message in stream %}
+		{% if message != "" %}
+			<script>
+				var div = document.getElementById("chat");
+				var chat = document.createElement("p");
+				div.appendChild(chat);
+				chat.innerHTML = "{{ message }}";
+				div.scrollTop = div.scrollHeight - div.clientHeight;
+			</script>
+		{% endif %}
+	{% endfor %}
+	
+</body>
+
+
+
+
+</html>
